@@ -1,3 +1,7 @@
+# 1.1.1
+
+* updated repository url in pubspec.yaml (old location was a metapackage and now this is a standalone package)
+
 # 1.1.0
 
 * Fixed half-renamed state. Now everything is consistently named `flutter_multicast_lock`. (this was because of a conflict with an existing, unmaintained package)

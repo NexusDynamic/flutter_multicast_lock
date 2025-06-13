@@ -1,6 +1,6 @@
 name: flutter_multicast_lock
 description: "A Flutter plugin for managing Android WiFi multicast locks."
-version: 1.1.0
+version: 1.1.1
 homepage: https://zeyus.com/
 repository: https://github.com/NexusDynamic/flutter_multicast_lock
 
