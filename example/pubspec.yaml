@@ -5,7 +5,7 @@ description: "Demonstrates how to use the flutter_multicast_lock plugin."
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 environment:
-  sdk: ^3.9.0-211.0.dev
+  sdk: ^3.8.1
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -19,7 +19,7 @@ dependencies:
 
   flutter_multicast_lock:
     # When depending on this package from a real application you should use:
-    #   android_multicast_lock: ^x.y.z
+    #   flutter_multicast_lock: ^x.y.z
     # See https://dart.dev/tools/pub/dependencies#version-constraints
     # The example app is bundled with the plugin so we use a path dependency on
     # the parent directory to use the current plugin's version.

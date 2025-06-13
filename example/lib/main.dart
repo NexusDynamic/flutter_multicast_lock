@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
-import 'package:flutter_multicast_lock/android_multicast_lock.dart';
+import 'package:flutter_multicast_lock/flutter_multicast_lock.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,18 +18,19 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   bool _isLockHeld = false;
   String _status = 'Ready';
-  final _androidMulticastLockPlugin = AndroidMulticastLock();
+  final _flutterMulticastLockPlugin = FlutterMulticastLock();
   final _lockNameController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
+    _flutterMulticastLockPlugin.exceptionOnUnsupportedPlatform = true;
     _checkLockStatus();
   }
 
   Future<void> _checkLockStatus() async {
     try {
-      final isHeld = await _androidMulticastLockPlugin.isMulticastLockHeld();
+      final isHeld = await _flutterMulticastLockPlugin.isMulticastLockHeld();
       setState(() {
         _isLockHeld = isHeld;
         _status = 'Lock status checked';
@@ -43,13 +44,15 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> _acquireLock() async {
     try {
-      final lockName = _lockNameController.text.trim().isEmpty 
-          ? null 
+      final lockName = _lockNameController.text.trim().isEmpty
+          ? null
           : _lockNameController.text.trim();
-      await _androidMulticastLockPlugin.acquireMulticastLock(lockName: lockName);
+      await _flutterMulticastLockPlugin.acquireMulticastLock(
+        lockName: lockName,
+      );
       await _checkLockStatus();
       setState(() {
-        _status = lockName != null 
+        _status = lockName != null
             ? 'Lock acquired successfully with name: $lockName'
             : 'Lock acquired successfully with default name';
       });
@@ -62,7 +65,7 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> _releaseLock() async {
     try {
-      await _androidMulticastLockPlugin.releaseMulticastLock();
+      await _flutterMulticastLockPlugin.releaseMulticastLock();
       await _checkLockStatus();
       setState(() {
         _status = 'Lock released successfully';
@@ -84,9 +87,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Android Multicast Lock Example'),
-        ),
+        appBar: AppBar(title: const Text('Flutter Multicast Lock Example')),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

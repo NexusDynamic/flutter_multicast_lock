@@ -1,4 +1,4 @@
-# android_multicast_lock
+# flutter_multicast_lock
 
 A Flutter plugin for managing Android WiFi multicast locks. This plugin allows you to acquire and release multicast locks on Android devices, which is necessary for receiving multicast UDP packets.
 
@@ -7,7 +7,7 @@ A Flutter plugin for managing Android WiFi multicast locks. This plugin allows y
 - ✅ Acquire WiFi multicast locks on Android
 - ✅ Release WiFi multicast locks on Android  
 - ✅ Check if multicast lock is currently held
-- ✅ Cross-platform compatible (no-op on iOS/other platforms)
+- ✅ Cross-platform compatible (no-op on iOS/other platforms, with option to throw exceptions)
 - ✅ Automatic permission handling
 
 ## Installation
@@ -16,7 +16,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  android_multicast_lock: ^1.0.0
+  flutter_multicast_lock: ^1.1.0
 ```
 
 ## Android Setup
@@ -27,27 +27,35 @@ However, if you want to explicitly declare the permission in your app's `android
 
 ```xml
 <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 ```
 
 ## Usage
 
 ```dart
-import 'package:android_multicast_lock/android_multicast_lock.dart';
+import 'package:flutter_multicast_lock/flutter_multicast_lock.dart';
 
-final androidMulticastLock = AndroidMulticastLock();
+final flutterMulticastLock = FlutterMulticastLock();
 
 // Acquire the multicast lock
-await androidMulticastLock.acquireMulticastLock();
+await flutterMulticastLock.acquireMulticastLock();
 
 // Check if lock is held
-bool isHeld = await androidMulticastLock.isMulticastLockHeld();
+bool isHeld = await flutterMulticastLock.isMulticastLockHeld();
 print('Multicast lock held: $isHeld');
 
 // Release the multicast lock
-await androidMulticastLock.releaseMulticastLock();
+await flutterMulticastLock.releaseMulticastLock();
 ```
 
 ## API Reference
+
+### `exceptionOnUnsupportedPlatform`
+
+A boolean flag that determines whether to throw an exception when the plugin is used on unsupported platforms (iOS, Web, Windows, macOS, Linux).
+Defaults to `false`, meaning it will complete successfully but do nothing on unsupported platforms. Set to `true` to throw a `PlatformException` instead.
 
 ### `acquireMulticastLock()`
 
@@ -76,11 +84,11 @@ Checks whether the multicast lock is currently held.
 | Platform | Supported |
 |----------|-----------|
 | Android  | ✅        |
-| iOS      | ❌ (no-op) |
-| Web      | ❌ (no-op) |
-| Windows  | ❌ (no-op) |
-| macOS    | ❌ (no-op) |
-| Linux    | ❌ (no-op) |
+| iOS      | ❌ (no-op or exception) |
+| Web      | ❌ (no-op or exception) |
+| Windows  | ❌ (no-op or exception) |
+| macOS    | ❌ (no-op or exception) |
+| Linux    | ❌ (no-op or exception) |
 
 On non-Android platforms, all methods complete successfully but perform no operations.
 
