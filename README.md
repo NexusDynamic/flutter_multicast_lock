@@ -1,5 +1,7 @@
 # flutter_multicast_lock
 
+![Pub Publisher](https://img.shields.io/pub/publisher/flutter_multicast_lock?style=flat-square) ![Pub Version](https://img.shields.io/pub/v/flutter_multicast_lock)
+
 A Flutter plugin for managing Android WiFi multicast locks. This plugin allows you to acquire and release multicast locks on Android devices, which is necessary for receiving multicast UDP packets.
 
 ## Features
@@ -16,7 +18,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_multicast_lock: ^1.1.0
+  flutter_multicast_lock: ^1.1.1
 ```
 
 ## Android Setup
