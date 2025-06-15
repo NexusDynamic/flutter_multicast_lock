@@ -100,7 +100,7 @@ Android devices normally filter out multicast packets to save battery. When your
 
 ## Example
 
-See the `example/` directory for a complete Flutter app demonstrating how to use this plugin.
+See the [`example`](example/lib/main.dart) for a complete Flutter app demonstrating how to use this plugin.
 
 ## Contributing
 
