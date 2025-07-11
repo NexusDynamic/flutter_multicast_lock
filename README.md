@@ -1,6 +1,6 @@
 # flutter_multicast_lock
 
-![Pub Publisher](https://img.shields.io/pub/publisher/flutter_multicast_lock?style=flat-square) ![Pub Version](https://img.shields.io/pub/v/flutter_multicast_lock)
+[![Pub Publisher](https://img.shields.io/pub/publisher/flutter_multicast_lock?style=flat-square)](https://pub.dev/publishers/zeyus.com/packages) [![Pub Version](https://img.shields.io/pub/v/flutter_multicast_lock)](https://pub.dev/packages/flutter_multicast_lock)
 
 A Flutter plugin for managing Android WiFi multicast locks. This plugin allows you to acquire and release multicast locks on Android devices, which is necessary for receiving multicast UDP packets.
 
