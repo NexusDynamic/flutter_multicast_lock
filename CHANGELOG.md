@@ -1,3 +1,8 @@
+# 1.2.0
+
+* Updated dependencies
+* Updated to AGP 8.13.2
+
 # 1.1.1
 
 * updated repository url in pubspec.yaml (old location was a metapackage and now this is a standalone package)
