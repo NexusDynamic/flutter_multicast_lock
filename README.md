@@ -23,6 +23,8 @@ dependencies:
 
 ## Android Setup
 
+**Important note for Android 17+**: (In Andoroid 17+)[https://developer.android.com/privacy-and-security/local-network-permission] you will be requred to both add, and request the permisson `ACCESS_LOCAL_NETWORK` to be able to use arbitrary multicast networking. If you only want to access a specific device for streaming, that may not be necessary, but please see the linked documentation for more information.
+
 The plugin automatically includes the required Android permission. No additional setup is needed.
 
 However, if you want to explicitly declare the permission in your app's `android/app/src/main/AndroidManifest.xml`, add:
@@ -32,6 +34,12 @@ However, if you want to explicitly declare the permission in your app's `android
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+<!-- Android 16+, implicit LOCAL NETWORK if nearby (or related) is requested and allowed by the user -->
+<uses-permission
+    android:name="android.permission.NEARBY_WIFI_DEVICES" />
+<!-- Android 17+, explicit LOCAL NETWORK permission is required, and user must accept it in the app settings -->
+<uses-permission
+    android:name="android.permission.ACCESS_LOCAL_NETWORK" />
 ```
 
 ## Usage

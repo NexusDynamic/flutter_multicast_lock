@@ -34,3 +34,5 @@ migrate_working_dir/
 
 # FVM Version Cache
 .fvm/
+
+.vscode/

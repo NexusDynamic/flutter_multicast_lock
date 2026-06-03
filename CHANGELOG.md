@@ -1,3 +1,10 @@
+
+# 1.2.1
+
+* Remove KGP
+* Updated AGP to 9.0.1
+* Updated gradle to 9.1.0
+
 # 1.2.0
 
 * Updated dependencies
