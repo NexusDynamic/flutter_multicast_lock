@@ -45,7 +45,8 @@ class MethodChannelFlutterMulticastLock extends FlutterMulticastLockPlatform {
       return;
     }
     await methodChannel!.invokeMethod<void>('acquireMulticastLock', {
-      'lockName': lockName ?? 'com.zeyus.flutter_multicast_lock', // Default lock name
+      'lockName':
+          lockName ?? 'com.zeyus.flutter_multicast_lock', // Default lock name
     });
   }
 
